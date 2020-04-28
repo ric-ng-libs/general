@@ -1,0 +1,13 @@
+<select
+  [multiple]="this.bAuthorizeMultipleChoices"
+  [size]="this.iNbVisibleItems"
+  [(ngModel)]="this.aSelectedItemsId"
+  (ngModelChange)="this.onChange($event)"
+>
+  <option *ngFor="let oItem of this._aItems"
+    [value]="oItem.getId()"
+    title="{{this.getOptionTitle(oItem)}}"
+  >
+    {{oItem.getLabel()}}
+  </option>
+</select>

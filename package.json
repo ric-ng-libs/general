@@ -1,0 +1,17 @@
+{
+  "name": "@ric-ng/general",
+  "version": "0.0.1",
+  "description": "Composants, Services, ... Angular - généraux. ",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
+  },
+  "dependencies": {
+    "@ric-ng/ts-general": "0.0.1"
+  },
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/ric-ng-libs/general.git"
+  },
+  "publishConfig": { "access": "public" }
+}
