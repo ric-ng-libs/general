@@ -1,0 +1,5 @@
+// Fichier ajouté car, vu d'ICI (depuis le projet de lib même), le linter râle car par exemple, pour lui,
+// la gestion des @Decorator n'est pas activée ("experimentalDecorators": true).
+{
+  "extends": "../../tsconfig.json"
+}
