@@ -1,13 +1,13 @@
 {
   "name": "@ric-ng/general",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Composants, Services, ... Angular - généraux. ",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
   },
   "dependencies": {
-    "@ric-ng/ts-general": "0.0.1"
+    "@ric-ng/ts-general": "0.0.3"
   },
   "repository" : {
     "type": "git",
