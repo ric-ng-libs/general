@@ -8,7 +8,7 @@
     }
   },
 
-  "whitelistedNonPeerDependencies": [
+  "allowedNonPeerDependencies": [
     "@ric-ng/ts-general"
   ]
 }

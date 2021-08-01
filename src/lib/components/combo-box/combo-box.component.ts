@@ -3,8 +3,8 @@ import { Component, OnInit, Input, Output, EventEmitter, isDevMode } from '@angu
 
 import { IItem } from '@ric-ng/ts-general';
 
-import { IMonoChoiceable } from '../_interfaces/IMonoChoiceable';
-import { IMultiChoicesable } from '../_interfaces/IMultiChoicesable';
+import { IMonoChoiceable } from '../__interfaces/IMonoChoiceable';
+import { IMultiChoicesable } from '../__interfaces/IMultiChoicesable';
 
 
 
@@ -15,17 +15,18 @@ import { IMultiChoicesable } from '../_interfaces/IMultiChoicesable';
 })
 export class ComboBoxComponent implements OnInit, IMonoChoiceable, IMultiChoicesable {
 
-  @Input('items') _aItems: Array<IItem> = [];
+  @Input('items') aItems: Array<IItem> = [];
   @Input('nbVisibleItems') iNbVisibleItems: number = 1;
 
   @Input('multiple') bAuthorizeMultipleChoices: boolean = false;
 
-  @Input('initSelectedItemsId') aSelectedItemsId: Array<string> = [];
-  @Input('initSelectedItemId') set sSelectedItemId(psSelectedItemId: string) {
-    this.aSelectedItemsId = [`${psSelectedItemId}`]; // Le forçage en string est NECESSAIRE, mais je ne sais pas pourquoi !!
+  @Input('initSelectedItemsId') aSelectedItemsId: Array<number> = [];
+  @Input('initSelectedItemId') set nSelectedItemId(pnSelectedItemId: number) {
+    this.aSelectedItemsId = [pnSelectedItemId];
   }
 
-  @Output('onChange') _oChangeEvent = new EventEmitter<IMonoChoiceable | IMultiChoicesable>();
+  @Output('onChange') 
+  private readonly oChangeEvent = new EventEmitter<IMonoChoiceable | IMultiChoicesable>();
 
 
   // ===================================================================
@@ -41,16 +42,16 @@ export class ComboBoxComponent implements OnInit, IMonoChoiceable, IMultiChoices
 
 // ===================================================================
 
-  onChange(paSelectedItemsId: Array<string>) {
+  onChange(paSelectedItemsId: Array<number>) {
     this._consoleLog();
     //
-    this._oChangeEvent.emit(this);
+    this.oChangeEvent.emit(this);
   }
 
-  public getSelectedItemId(): string {
+  public getSelectedItemId(): number {
     return(this.aSelectedItemsId[0]);
   }
-  public getSelectedItemsId(): Array<string> {
+  public getSelectedItemsId(): Array<number> {
     return(this.aSelectedItemsId);
   }
 

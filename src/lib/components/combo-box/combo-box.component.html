@@ -4,7 +4,7 @@
   [(ngModel)]="this.aSelectedItemsId"
   (ngModelChange)="this.onChange($event)"
 >
-  <option *ngFor="let oItem of this._aItems"
+  <option *ngFor="let oItem of this.aItems"
     [value]="oItem.getId()"
     title="{{this.getOptionTitle(oItem)}}"
   >

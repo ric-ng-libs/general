@@ -1,3 +1,3 @@
 export interface IMonoChoiceable {
-  getSelectedItemId(): string;
+  getSelectedItemId(): number;
 }
