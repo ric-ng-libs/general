@@ -1,0 +1,12 @@
+<select
+  [(ngModel)]="this.selectedItemId"
+  (ngModelChange)="this.onChange($event)"
+  [size]="this.iNbVisibleItems"
+>
+  <option *ngFor="let oItem of this.aItems"
+    [value]="oItem.getId()"
+    title="{{this.getOptionTitle(oItem)}}"
+  >
+    {{oItem.getLabel()}}
+  </option>
+</select>

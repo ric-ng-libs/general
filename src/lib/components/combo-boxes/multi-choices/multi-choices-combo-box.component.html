@@ -1,8 +1,8 @@
 <select
-  [multiple]="this.bAuthorizeMultipleChoices"
-  [size]="this.iNbVisibleItems"
+  [multiple] = 1
   [(ngModel)]="this.aSelectedItemsId"
   (ngModelChange)="this.onChange($event)"
+  [size]="this.iNbVisibleItems"
 >
   <option *ngFor="let oItem of this.aItems"
     [value]="oItem.getId()"
