@@ -1,6 +1,6 @@
 {
   "name": "@ric-ng/general",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Composants, Services, ... Angular - généraux. ",
   "peerDependencies": {
     "@angular/common": "^12.1.0",
