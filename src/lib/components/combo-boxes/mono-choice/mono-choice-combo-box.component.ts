@@ -1,7 +1,7 @@
 import { Component, Input, isDevMode } from '@angular/core';
 
 
-import { AComboBoxComponent } from '../combo-box/_abstracts/combo-box.component';
+import { AComboBoxComponent } from '../common/_abstracts/combo-box.component';
 
 import { IMonoChoiceable } from './../../__interfaces/IMonoChoiceable';
 
@@ -9,11 +9,12 @@ import { IMonoChoiceable } from './../../__interfaces/IMonoChoiceable';
 
 @Component({
   selector: 'mono-choice-combo-box',
-  templateUrl: './../combo-box/combo-box.component.html', //<<<<<<<<<<< Template HTML indépendant
+  templateUrl: './../common/combo-box.component.html', //<<<<<<<<<<< Template HTML indépendant
 })
 export class MonoChoiceComboBoxComponent
   extends AComboBoxComponent<IMonoChoiceable> //<<<<<<< juste une classe Controller indépendante.
   implements IMonoChoiceable {
+
 
   bMultiSelectionEnabled: boolean = false;
 
@@ -23,7 +24,11 @@ export class MonoChoiceComboBoxComponent
                                  //la présence de l'attribut multiple (quelle que soit sa valeur)
                                  //fait que le ngModel travaillera avec un Array !
 
-  @Input('initSelectedItemId') set setSelectedItemId(pnSelectedItemId: number) {
+  @Input('setSelectedItemId') 
+  set _setSelectedItemId(pnSelectedItemId: number) {
+    if (isDevMode()) {
+      console.log(`_setSelectedItemId: ${pnSelectedItemId}`);
+    }
     this.selection = [pnSelectedItemId];
   }
   
@@ -49,6 +54,7 @@ export class MonoChoiceComboBoxComponent
     this.consoleLogThis();
     //
     this.oChangeEvent.emit(this);
+
   }
 
   public getSelectedItemId(): number {

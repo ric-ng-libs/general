@@ -1,14 +1,14 @@
 import { Component, Input, isDevMode } from '@angular/core';
 
 
-import { AComboBoxComponent } from '../combo-box/_abstracts/combo-box.component';
+import { AComboBoxComponent } from '../common/_abstracts/combo-box.component';
 
 import { IMultiChoicesable } from './../../__interfaces/IMultiChoicesable';
 
 
 @Component({
   selector: 'multi-choices-combo-box',
-  templateUrl: './../combo-box/combo-box.component.html', //<<<<<<<<<<< Template HTML indépendant
+  templateUrl: './../common/combo-box.component.html', //<<<<<<<<<<< Template HTML indépendant
 })
 export class MultiChoicesComboBoxComponent
 extends AComboBoxComponent<IMultiChoicesable> //<<<<<<< juste une classe Controller indépendante.
@@ -16,7 +16,7 @@ implements IMultiChoicesable {
 
   bMultiSelectionEnabled: boolean = true;
 
-  @Input('initSelectedItemsId')
+  @Input('setSelectedItemsId')
   selection: Array<number> = [];
 
 
