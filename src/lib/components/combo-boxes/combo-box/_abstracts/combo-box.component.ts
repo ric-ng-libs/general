@@ -4,8 +4,9 @@ import { Input, Output, EventEmitter, isDevMode, Component, OnInit } from '@angu
 import { IItem } from '@ric-ng/ts-general';
 
 
-@Component({
-  template: ''
+@Component({ //<< Obligatoire du fait des Output et Input.
+             //Mais en réalité, il s'agit bien d'une classe toute bête, destinée à être parente.
+  template: '' 
 })
 export abstract class AComboBoxComponent<TypeChoiceable> implements OnInit {
 

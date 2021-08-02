@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
 import { MonoChoiceComboBoxComponent } from './components/combo-boxes/mono-choice/mono-choice-combo-box.component';
 import { MultiChoicesComboBoxComponent } from './components/combo-boxes/multi-choices/multi-choices-combo-box.component';
-
 
 
 @NgModule({
   declarations: [
     MonoChoiceComboBoxComponent,
-    MultiChoicesComboBoxComponent
+    MultiChoicesComboBoxComponent,
+
   ],
   imports: [
     CommonModule,
@@ -19,6 +20,7 @@ import { MultiChoicesComboBoxComponent } from './components/combo-boxes/multi-ch
   exports: [
     MonoChoiceComboBoxComponent,
     MultiChoicesComboBoxComponent
+    
   ]
 })
 export class GeneralModule { }

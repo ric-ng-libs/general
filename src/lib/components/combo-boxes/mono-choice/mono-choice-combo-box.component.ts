@@ -1,7 +1,7 @@
 import { Component, Input, isDevMode } from '@angular/core';
 
 
-import { AComboBoxComponent } from './../_abstracts/combo-box.component';
+import { AComboBoxComponent } from '../combo-box/_abstracts/combo-box.component';
 
 import { IMonoChoiceable } from './../../__interfaces/IMonoChoiceable';
 
@@ -9,16 +9,24 @@ import { IMonoChoiceable } from './../../__interfaces/IMonoChoiceable';
 
 @Component({
   selector: 'mono-choice-combo-box',
-  templateUrl: './mono-choice-combo-box.component.html',
-  styleUrls: ['./mono-choice-combo-box.component.scss']
+  templateUrl: './../combo-box/combo-box.component.html', //<<<<<<<<<<< Template HTML indépendant
 })
 export class MonoChoiceComboBoxComponent
-  extends AComboBoxComponent<IMonoChoiceable>
+  extends AComboBoxComponent<IMonoChoiceable> //<<<<<<< juste une classe Controller indépendante.
   implements IMonoChoiceable {
 
-  @Input('initSelectedItemId')
-  selectedItemId: number = -1;
+  bMultiSelectionEnabled: boolean = false;
 
+  selection: Array<number> = []; //Quand même obligé de passer par un Array, 
+                                 //car dans le template l'attribut HTML multiple à false ne suffit pas !
+                                 //Il empêche juste le user de multi-sélectionner, MAIS
+                                 //la présence de l'attribut multiple (quelle que soit sa valeur)
+                                 //fait que le ngModel travaillera avec un Array !
+
+  @Input('initSelectedItemId') set setSelectedItemId(pnSelectedItemId: number) {
+    this.selection = [pnSelectedItemId];
+  }
+  
 
   // ===================================================================
 
@@ -29,14 +37,14 @@ export class MonoChoiceComboBoxComponent
 
   protected consoleLogThis(): void {
     if (isDevMode()) {
-      console.log(`MonoChoiceComboBoxComponent - selected item id : ${this.selectedItemId}`);
+      console.log(`MonoChoiceComboBoxComponent - selected item id : ${this.selection}`);
 
     }
   }
 
   // ===================================================================
 
-  onChange(_pnSelectedItemId: number): void {
+  onChange(selection: Array<number>): void {
     console.log(`\nCHANGE MONO CHOICE COMBO :`);
     this.consoleLogThis();
     //
@@ -44,7 +52,7 @@ export class MonoChoiceComboBoxComponent
   }
 
   public getSelectedItemId(): number {
-    return (this.selectedItemId);
+    return (this.selection[0]); //Puisqu'on est obligé de travailler avec un Array (comme expliqué plus haut).
   }
 
 }

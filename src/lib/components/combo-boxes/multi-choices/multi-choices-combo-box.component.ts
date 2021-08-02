@@ -1,22 +1,23 @@
 import { Component, Input, isDevMode } from '@angular/core';
 
 
-import { AComboBoxComponent } from './../_abstracts/combo-box.component';
+import { AComboBoxComponent } from '../combo-box/_abstracts/combo-box.component';
 
 import { IMultiChoicesable } from './../../__interfaces/IMultiChoicesable';
 
 
 @Component({
   selector: 'multi-choices-combo-box',
-  templateUrl: './multi-choices-combo-box.component.html',
-  styleUrls: ['./multi-choices-combo-box.component.scss']
+  templateUrl: './../combo-box/combo-box.component.html', //<<<<<<<<<<< Template HTML indépendant
 })
 export class MultiChoicesComboBoxComponent
-  extends AComboBoxComponent<IMultiChoicesable>
-  implements IMultiChoicesable {
+extends AComboBoxComponent<IMultiChoicesable> //<<<<<<< juste une classe Controller indépendante.
+implements IMultiChoicesable {
+
+  bMultiSelectionEnabled: boolean = true;
 
   @Input('initSelectedItemsId')
-  aSelectedItemsId: Array<number> = [];
+  selection: Array<number> = [];
 
 
   // ===================================================================
@@ -30,7 +31,7 @@ export class MultiChoicesComboBoxComponent
 
   protected consoleLogThis() {
     if (isDevMode()) {
-      console.log(`MultiChoicesComboBoxComponent - selected items id : [ ${this.aSelectedItemsId.join(", ")} ]`);
+      console.log(`MultiChoicesComboBoxComponent - selected items id : [ ${this.selection.join(", ")} ]`);
 
     }
   }
@@ -47,7 +48,7 @@ export class MultiChoicesComboBoxComponent
   }
 
   public getSelectedItemsId(): Array<number> {
-    return (this.aSelectedItemsId);
+    return (this.selection);
   }
 
 }

@@ -1,0 +1,29 @@
+<!--
+  Template disponible pour n'importe quel controller.
+  PAR CONTRE, ce dernier devra posséder les membres suivants :
+    bMultiSelectionEnabled
+    selection  (forcément tableau à cause de l'existence de l'attribut "multiple")
+    iNbVisibleItems
+  Ainsi que les méthodes : 
+    onChange  
+    getOptionTitle
+
+-->
+<!-- REM.: quelle que soit la valeur de l'attribut "multiple" ci-dessous,
+     le fait même qu'il existe va : faire que ngModel travaillera avec un tableau !
+     Par contre "multiple" mis à false va POURTANT faire en sorte que le user ne puisse pas 
+     multi-sélectionner !
+-->
+<select
+  [multiple]="this.bMultiSelectionEnabled"
+  [(ngModel)]="this.selection"
+  (ngModelChange)="this.onChange($event)"
+  [size]="this.iNbVisibleItems"
+>
+  <option *ngFor="let oItem of this.aItems"
+    [value]="oItem.getId()"
+    title="{{this.getOptionTitle(oItem)}}"
+  >
+    {{oItem.getLabel()}}
+  </option>
+</select>
